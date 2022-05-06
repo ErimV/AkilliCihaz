@@ -1,7 +1,7 @@
 package com.erimvurucu;
 
 public interface IVeritabani {
-    public void kullanici_adiDogrula(String kullanici_adi);
-    public void sifreDogrula(String sifre);
+    public Boolean kullanici_adiDogrula(String kullanici_adi);
+    public Boolean sifreDogrula(String kullanici_adi, String sifre);
 
 }
