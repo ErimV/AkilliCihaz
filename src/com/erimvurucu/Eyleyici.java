@@ -1,5 +1,6 @@
 package com.erimvurucu;
 
+
 public class Eyleyici implements IEyleyici{
     private Boolean sogutucuDurum = false;
 
@@ -12,4 +13,9 @@ public class Eyleyici implements IEyleyici{
     public void sogutucuKapat() {
         this.sogutucuDurum = false;
     }
+
+    public Boolean getDurum() {
+        return sogutucuDurum;
+    }
+
 }

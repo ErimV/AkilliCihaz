@@ -18,6 +18,10 @@ public class AgArayuzu implements IAgArayuzu{
         System.out.println(msj);
     }
 
+    public void mesajGoruntule(double msj) {
+        System.out.printf("%.2f\n",msj);
+    }
+
     @Override
     public void ekranTemizle() {
         System.out.print("\033[H\033[2J");
