@@ -1,0 +1,15 @@
+package com.erimvurucu;
+
+public class Eyleyici implements IEyleyici{
+    private Boolean sogutucuDurum = false;
+
+    @Override
+    public void sogutucuAc() {
+        this.sogutucuDurum = true;
+    }
+
+    @Override
+    public void sogutucuKapat() {
+        this.sogutucuDurum = false;
+    }
+}
