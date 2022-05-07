@@ -1,5 +1,7 @@
 package com.erimvurucu;
 
+import java.io.IOException;
+
 import static com.erimvurucu.AkilliCihazDurum.*;
 
 public class AkilliCihaz {
@@ -14,7 +16,7 @@ public class AkilliCihaz {
         agArayuzu = new AgArayuzu();
     }
 
-    public void basla() throws InterruptedException {
+    public void basla() throws InterruptedException, IOException {
         this.durum = AcilisTestiYapiliyor;
         agArayuzu.kullaniciDogrula();
         this.durum = Bekle;
