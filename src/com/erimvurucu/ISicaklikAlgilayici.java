@@ -1,5 +1,5 @@
 package com.erimvurucu;
 
 public interface ISicaklikAlgilayici {
-    public double sicaklikDondur();
+    double sicaklikDondur(IEyleyici eyleyici);
 }

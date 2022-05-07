@@ -1,10 +1,9 @@
 package com.erimvurucu;
 
 public interface IAgArayuzu {
-    public void mesajGoruntule(String msj);
-    public void mesajGoruntule(double msj);
-    public void ekranTemizle();
-    public void bekle(int sn) throws InterruptedException;
-    public String veriAl();
-    public void kullaniciDogrula() throws InterruptedException;
+    void mesajGoruntule(String msj);
+    void mesajGoruntule(String msj, double dgr);
+    void bekle(int sn) throws InterruptedException;
+    String veriAl();
+    void kullaniciDogrula() throws InterruptedException;
 }

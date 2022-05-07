@@ -1,10 +1,9 @@
 package com.erimvurucu;
 
-public class AkilliCihaz {
-    private String menu =   "1. Sicaklik Goruntule\n" +
-                            "2. Sogutucu Calistir\n" +
-                            "3. Iptal\n";
+import static com.erimvurucu.AkilliCihazDurum.*;
 
+public class AkilliCihaz {
+    private AkilliCihazDurum durum = Kapali;
     private final IAgArayuzu agArayuzu;
     private final IEyleyici eyleyici;
     private final ISicaklikAlgilayici sicaklikAlgilayici;
@@ -16,37 +15,56 @@ public class AkilliCihaz {
     }
 
     public void basla() throws InterruptedException {
+        this.durum = AcilisTestiYapiliyor;
         agArayuzu.kullaniciDogrula();
-        Boolean devam = true;
+        this.durum = Bekle;
 
-        while(devam){
-            agArayuzu.mesajGoruntule(menu);
+        while(this.durum != ServisDisi){
+            agArayuzu.mesajGoruntule(
+                    """
+                            ---------------------
+                            1. Sicaklik Goruntule
+                            2. Sogutucu Calistir
+                            3. Iptal
+                            ---------------------
+                            """
+            );
+            agArayuzu.mesajGoruntule("Seciminiz(1, 2, 3):");
             String secim = agArayuzu.veriAl();
-            agArayuzu.mesajGoruntule("Seciminiz: " + secim);
-            switch(secim){
-                case "1":
-                    double sicaklik = sicaklikAlgilayici.sicaklikDondur();
-                    agArayuzu.mesajGoruntule(sicaklik);
-                    break;
-                case "2":
-                    if (eyleyici.getDurum() == true){
+            switch (secim) {
+                case "1" -> {
+                    agArayuzu.mesajGoruntule(secim + ". secenek secildi.");
+                    this.durum = Algila;
+                    double sicaklik = sicaklikAlgilayici.sicaklikDondur(eyleyici);
+                    agArayuzu.mesajGoruntule("---------------------\nSicaklik: ", sicaklik);
+                    this.durum = Bekle;
+                }
+                case "2" -> {
+                    agArayuzu.mesajGoruntule(secim + ". secenek secildi.");
+                    this.durum = IslemYapiliyor;
+                    if (eyleyici.getDurum()) {
                         eyleyici.sogutucuKapat();
-                        agArayuzu.mesajGoruntule("Sogutucu kapatildi.");
-                    }
-                    else if (eyleyici.getDurum() == false){
+                        agArayuzu.mesajGoruntule("---------------------\nSogutucu kapatildi.");
+                    } else if (!eyleyici.getDurum()) {
                         eyleyici.sogutucuAc();
-                        agArayuzu.mesajGoruntule("Sogutucu acildi.");
+                        agArayuzu.mesajGoruntule("---------------------\nSogutucu acildi.");
                     }
-                    break;
-                case "3":
+                    this.durum = Bekle;
+                }
+                case "3" -> {
+                    agArayuzu.mesajGoruntule(secim + ". secenek secildi.");
                     agArayuzu.mesajGoruntule("Islem iptal edildi.");
-                    devam = false;
-                    break;
-                default:
-                    agArayuzu.mesajGoruntule("Hatali secim yapildi.('1', '2', '3' degerlerinden birini giriniz.)");
+                    this.durum = ServisDisi;
+                }
+                default ->
+                        agArayuzu.mesajGoruntule("Hatali secim yapildi.('1', '2', '3' degerlerinden birini giriniz.)");
             }
 
         }
 
+    }
+
+    public void setDurum(AkilliCihazDurum durum) {
+        this.durum = durum;
     }
 }

@@ -6,13 +6,11 @@ public class SicaklikAlgilayici implements ISicaklikAlgilayici {
     private double sicaklik;
 
     @Override
-    public double sicaklikDondur() {
+    public double sicaklikDondur(IEyleyici eyleyici) {
         Random r = new Random();
-        this.sicaklik = 0 + (70 - 0) * r.nextDouble();
-        return this.sicaklik;
-    }
+        if (eyleyici.getDurum()) this.sicaklik = 16 + (22 - 16) * r.nextDouble();
+        else if (!eyleyici.getDurum()) this.sicaklik = 22 + (28 - 22) * r.nextDouble();
 
-    public String toString() {
-        return String.format("%lf",sicaklik);
+        return this.sicaklik;
     }
 }

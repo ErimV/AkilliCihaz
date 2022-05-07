@@ -1,6 +1,5 @@
 package com.erimvurucu;
 
-import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,8 +11,6 @@ public class Veritabani implements IVeritabani{
         Connection conn = null;
         try {
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/akilliCihaz", "postgres", "12345");
-
-            //System.out.println("Veritabanina baglanildi!");
 
         } catch (Exception e) {
             System.out.println("Veritabanina baglanti kurulamadi!");
@@ -33,19 +30,7 @@ public class Veritabani implements IVeritabani{
 
             conn.close();
 
-            if(rs.next())
-            {
-                //String username  = rs.getString("kullanici_adi");
-                //System.out.println("Kullanici " + username + " onaylandi!");
-                return true;
-            }
-            /*
-            else {
-                System.out.println("Kullanici onaylanamadi!");
-                return false;
-            }
-
-             */
+            if(rs.next()) return true;
 
             rs.close();
             stmt.close();
@@ -66,21 +51,11 @@ public class Veritabani implements IVeritabani{
 
             conn.close();
 
-            if(rs.next())
-            {
-                //System.out.println("Hosgeldiniz " + kullanici_adi);
-                return true;
-            }
+            if(rs.next()) return true;
 
             rs.close();
             stmt.close();
-            /*
-            else {
-            System.out.println(kullanici_adi + " icin sifre hatali!");
-            return false;
-        }
 
-             */
         } catch (Exception e) {
             e.printStackTrace();
         }
