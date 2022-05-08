@@ -1,4 +1,4 @@
-package com.erimvurucu;
+package com.erimvurucu.Veritabani;
 
 public class IstemciModul {
     IVeritabaniFactory veritabaniFactory;

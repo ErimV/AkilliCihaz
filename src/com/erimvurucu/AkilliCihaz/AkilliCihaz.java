@@ -1,8 +1,8 @@
-package com.erimvurucu;
+package com.erimvurucu.AkilliCihaz;
 
 import java.io.IOException;
 
-import static com.erimvurucu.AkilliCihazDurum.*;
+import static com.erimvurucu.AkilliCihaz.AkilliCihazDurum.*;
 
 public class AkilliCihaz {
     private AkilliCihazDurum durum = Kapali;

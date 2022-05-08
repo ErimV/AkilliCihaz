@@ -1,4 +1,4 @@
-package com.erimvurucu;
+package com.erimvurucu.AkilliCihaz;
 
 import java.util.Random;
 

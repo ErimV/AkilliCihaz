@@ -1,4 +1,4 @@
-package com.erimvurucu;
+package com.erimvurucu.Logging;
 
 import java.io.IOException;
 

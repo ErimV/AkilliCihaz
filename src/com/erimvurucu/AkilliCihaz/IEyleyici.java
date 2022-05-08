@@ -1,4 +1,4 @@
-package com.erimvurucu;
+package com.erimvurucu.AkilliCihaz;
 
 public interface IEyleyici {
     void sogutucuAc();

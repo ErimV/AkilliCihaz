@@ -1,6 +1,6 @@
-package com.erimvurucu;
+package com.erimvurucu.Veritabani;
 
-public class DigerSQL implements IVeritabani{
+public class DigerSQL implements IVeritabani {
     // Dummy SQL sinifi
     @Override
     public Boolean kullanici_adiDogrula(String kullanici_adi){

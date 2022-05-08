@@ -1,6 +1,6 @@
-package com.erimvurucu;
+package com.erimvurucu.AkilliCihaz;
 
-public class Eyleyici implements IEyleyici{
+public class Eyleyici implements IEyleyici {
     private Boolean sogutucuDurum = false;
 
     @Override

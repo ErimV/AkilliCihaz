@@ -1,11 +1,11 @@
-package com.erimvurucu;
+package com.erimvurucu.Veritabani;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class PostgreSQL implements IVeritabani{
+public class PostgreSQL implements IVeritabani {
 
     private Connection baglan(){
         Connection conn = null;

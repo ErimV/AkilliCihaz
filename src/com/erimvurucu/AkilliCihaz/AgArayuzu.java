@@ -1,11 +1,14 @@
-package com.erimvurucu;
+package com.erimvurucu.AkilliCihaz;
+
+import com.erimvurucu.Logging.*;
+import com.erimvurucu.Veritabani.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class AgArayuzu implements IAgArayuzu{
+public class AgArayuzu implements IAgArayuzu {
     private final IVeritabaniFactory veritabaniFactory;
 
     public AgArayuzu() {
