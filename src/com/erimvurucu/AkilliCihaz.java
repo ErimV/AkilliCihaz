@@ -17,11 +17,12 @@ public class AkilliCihaz {
     }
 
     public void basla() throws InterruptedException, IOException {
-        this.durum = AcilisTestiYapiliyor;
-        agArayuzu.kullaniciDogrula();
         this.durum = Bekle;
+        agArayuzu.kullaniciDogrula();
 
+        // Asıl secim dongusu
         while(this.durum != ServisDisi){
+            this.durum = IslemYapiliyor;
             agArayuzu.mesajGoruntule(
                     """
                             ---------------------
@@ -36,14 +37,11 @@ public class AkilliCihaz {
             switch (secim) {
                 case "1" -> {
                     agArayuzu.mesajGoruntule(secim + ". secenek secildi.");
-                    this.durum = Algila;
                     double sicaklik = sicaklikAlgilayici.sicaklikDondur(eyleyici);
                     agArayuzu.mesajGoruntule("---------------------\nSicaklik: ", sicaklik);
-                    this.durum = Bekle;
                 }
                 case "2" -> {
                     agArayuzu.mesajGoruntule(secim + ". secenek secildi.");
-                    this.durum = IslemYapiliyor;
                     if (eyleyici.getDurum()) {
                         eyleyici.sogutucuKapat();
                         agArayuzu.mesajGoruntule("---------------------\nSogutucu kapatildi.");
@@ -51,7 +49,6 @@ public class AkilliCihaz {
                         eyleyici.sogutucuAc();
                         agArayuzu.mesajGoruntule("---------------------\nSogutucu acildi.");
                     }
-                    this.durum = Bekle;
                 }
                 case "3" -> {
                     agArayuzu.mesajGoruntule(secim + ". secenek secildi.");

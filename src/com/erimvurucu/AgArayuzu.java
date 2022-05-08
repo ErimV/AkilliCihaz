@@ -41,10 +41,12 @@ public class AgArayuzu implements IAgArayuzu{
         while(!onay){
             this.mesajGoruntule("Kullanici Adi: ");
             String username = this.veriAl();
-
             this.mesajGoruntule("Kullanici dogrulaniyor...");
+
+            // Kullanici adi dogru ise sifre kontrolu
             while(veritabani.kullanici_adiDogrula(username)){
                 this.bekle(1);
+                // Sifre her yanlis girildiginde tekrar yazmamasi icin
                 if(count == 0){
                     this.mesajGoruntule("Kullanici onaylandi.");
                     this.bekle(1);
@@ -52,23 +54,29 @@ public class AgArayuzu implements IAgArayuzu{
                 this.mesajGoruntule(username +" icin sifrenizi giriniz: ");
                 String password = this.veriAl();
                 this.mesajGoruntule("Sifre dogrulaniyor...");
+
+                // Sifre dogru ise
                 if(veritabani.sifreDogrula(username, password)){
                     this.bekle(1);
                     this.mesajGoruntule("Sifre dogru.");
                     this.mesajGoruntule("Sisteme giris basarili.\nHosgeldiniz " + username + "...");
-                    Yetkili yetkili = new Yetkili(username, LocalDateTime.now());
+                    // Giris yapanin bilgilerini loglama icin yolla
+                    InternetKullanicisi internetKullanicisi = new InternetKullanicisi(username, LocalDateTime.now());
                     Publisher p = new Publisher();
-                    p.ekle(yetkili);
+                    p.ekle(internetKullanicisi);
+
                     this.bekle(1);
                     onay = true;
                     break;
                 }
+                // Sifre yanlis ise
                 else {
                     this.bekle(1);
                     this.mesajGoruntule("Sifre yanlis, tekrar giriniz... ");
                     count++;
                 }
             }
+            // Kullanici adi yanlis ise
             if(!veritabani.kullanici_adiDogrula(username)) {
                 this.bekle(1);
                 this.mesajGoruntule("Kullanici bulunamadi, tekrar giriniz... ");
